@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %} Links {% endblock title %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'main.css' %}">
+{% endblock stylesheets %}
+
+{% block content %}
+
+<a class="link1" href="https://www.qu.edu.sa/" target="_blank">
+    Go to QU website (open a new tab)
+</a>
+
+<a class="link2" href="https://www.qu.edu.sa/">
+    Go to QU website (open in the same page/tab)
+</a>
+
+<a id="link3" href="https://www.qu.edu.sa/">
+    Go to QU website (open in the same page/tab)
+</a>
+
+{% endblock content %}

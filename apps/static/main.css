@@ -1,0 +1,91 @@
+.link1 {
+    display: block;
+    padding: 15px;
+    text-align: center;
+    background-color: lightgreen;
+    color: red;
+}
+
+.link2 {
+    display: block;
+    padding: 15px;
+    text-align: center;
+    background-color: #555555;
+    color: yellow;
+}
+
+#link3 {
+    display: block;
+    padding: 15px;
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+a:visited {
+    color: purple;
+}
+
+a:hover {
+    color: blue;
+}
+
+a:active {
+    color: green;
+}
+
+.format-title {
+    color: green;
+    background-color: lightyellow;
+    padding: 10px;
+}
+
+.listing-title {
+    color: white;
+    background-color: cadetblue;
+    padding: 10px;
+}
+
+.fruit-table {
+    border-collapse: collapse;
+    margin: 10px auto;
+}
+
+.fruit-table th,
+.fruit-table td {
+    border: 1px solid gray;
+    padding: 2px 5px;
+}
+
+.fruit-table caption {
+    margin-bottom: 3px;
+}
+.camel-table {
+    border-collapse: collapse;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.camel-table th,
+.camel-table td {
+    border: 1px solid gray;
+    padding: 4px 10px;
+}
+
+.camel-table img {
+    width: 220px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.desert-cell {
+    padding: 0;
+}
+
+.camel-heading {
+    height: 80px;
+}
+
+.camel-table caption {
+    margin-bottom: 2px;
+}
