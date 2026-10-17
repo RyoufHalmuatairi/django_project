@@ -29,3 +29,4 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(seed_books, remove_seed_books),
+    ]
