@@ -4,9 +4,8 @@
 
 {% block content %}
 <h1>List of Books</h1>
-<ul>
     {% for book in books %}
-    <li>{{ book.id }} — {{ book.title }} — {{ book.author }}</li>
+    ID: {{ book.id }}, Title: {{ book.title }}
+    <hr>
     {% endfor %}
-</ul>
 {% endblock content %}
