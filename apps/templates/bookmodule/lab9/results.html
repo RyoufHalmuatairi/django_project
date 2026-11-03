@@ -1,0 +1,40 @@
+{% extends "layouts/base.html" %}
+{% block title %}Lab 9 — Task {{ task }}{% endblock %}
+{% block content %}
+<h1>Lab 9 — Django Models Part 3</h1>
+<nav>
+<a href="{% url 'books.lab9_task1' %}">Task 1: Availability</a> |
+<a href="{% url 'books.lab9_task2' %}">Task 2: Publisher stock</a> |
+<a href="{% url 'books.lab9_task3' %}">Task 3: Oldest books</a> |
+<a href="{% url 'books.lab9_task4' %}">Task 4: Prices</a> |
+<a href="{% url 'books.lab9_task5' %}">Task 5: Highly rated books</a> |
+<a href="{% url 'books.lab9_task6' %}">Task 6: Filtered counts</a>
+</nav>
+<h2>Task {{ task }}</h2>
+{% if task == 1 %}
+<p>Availability = book quantity / total stock × 100. Total stock: {{ total }}.</p>
+<table border="1" cellpadding="8">
+<tr><th>Book</th><th>Publisher</th><th>Quantity</th><th>Availability</th></tr>
+{% for book in books %}<tr><td>{{ book.title }}</td><td>{{ book.publisher.name|default:"Unassigned" }}</td><td>{{ book.quantity }}</td><td>{{ book.availability|floatformat:2 }}%</td></tr>
+{% empty %}<tr><td colspan="4">No books available.</td></tr>{% endfor %}
+</table>
+{% else %}
+{% if task == 5 %}<p>Highly rated means a rating of 4 or 5 out of 5. Count is the number of titles; stock is the sum of their quantities.</p>{% endif %}
+{% if task == 6 %}<p>Count books with price greater than 50 and quantity from 1 to 4.</p>{% endif %}
+<table border="1" cellpadding="8">
+<tr><th>Publisher</th>
+{% if task == 2 %}<th>Total book stock</th>
+{% elif task == 3 %}<th>Oldest book</th><th>Publication date</th>
+{% elif task == 4 %}<th>Average price</th><th>Minimum price</th><th>Maximum price</th>
+{% elif task == 5 %}<th>Highly rated book count</th><th>Highly rated book stock</th>
+{% elif task == 6 %}<th>Matching book count</th>{% endif %}</tr>
+{% for publisher in publishers %}<tr><td>{{ publisher.name }}</td>
+{% if task == 2 %}<td>{{ publisher.total_stock }}</td>
+{% elif task == 3 %}<td>{{ publisher.oldest_title|default:"No books" }}</td><td>{{ publisher.oldest_date|date:"Y-m-d"|default:"N/A" }}</td>
+{% elif task == 4 %}<td>{{ publisher.average|floatformat:2|default:"N/A" }}</td><td>{{ publisher.minimum|floatformat:2|default:"N/A" }}</td><td>{{ publisher.maximum|floatformat:2|default:"N/A" }}</td>
+{% elif task == 5 %}<td>{{ publisher.high_count }}</td><td>{{ publisher.high_stock }}</td>
+{% elif task == 6 %}<td>{{ publisher.matching_count }}</td>{% endif %}</tr>
+{% empty %}<tr><td>No publishers available.</td></tr>{% endfor %}
+</table>
+{% endif %}
+{% endblock %}
