@@ -1,0 +1,11 @@
+{% extends "bookmodule/lab8/base.html" %}
+{% block lab_content %}
+<h2>Task 7: Number of students in each city</h2>
+<p>Task 6 models: each student belongs to an address with a city.</p>
+<table border="1" cellpadding="8">
+    <thead><tr><th>City</th><th>Number of students</th></tr></thead>
+    <tbody>{% for city in cities %}
+    <tr><td>{{ city.city }}</td><td>{{ city.student_count }}</td></tr>
+    {% empty %}<tr><td colspan="2">No cities available.</td></tr>{% endfor %}</tbody>
+</table>
+{% endblock %}

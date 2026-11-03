@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Book
+from django.db.models import Q, Count, Sum, Avg, Max, Min
+from .models import Book, Address
 
 
 def index(request):
@@ -71,3 +72,41 @@ def complex_query(request):
     if mybooks:
         return render(request, 'bookmodule/bookList.html', {'books': mybooks})
     return render(request, 'bookmodule/index.html')
+
+
+def lab8_task1(request):
+    books = Book.objects.filter(Q(price__lte=80))
+    return render(request, 'bookmodule/lab8/books.html', {'books': books, 'task': 1})
+
+
+def lab8_task2(request):
+    books = Book.objects.filter(
+        Q(edition__gt=3) & (Q(title__icontains='co') | Q(author__icontains='co'))
+    )
+    return render(request, 'bookmodule/lab8/books.html', {'books': books, 'task': 2})
+
+
+def lab8_task3(request):
+    # Opposite of the entire Task 2 condition (De Morgan's law).
+    books = Book.objects.filter(
+        ~(Q(edition__gt=3) & (Q(title__icontains='co') | Q(author__icontains='co')))
+    )
+    return render(request, 'bookmodule/lab8/books.html', {'books': books, 'task': 3})
+
+
+def lab8_task4(request):
+    books = Book.objects.order_by('title', 'id')
+    return render(request, 'bookmodule/lab8/books.html', {'books': books, 'task': 4})
+
+
+def lab8_task5(request):
+    statistics = Book.objects.aggregate(
+        count=Count('id'), total=Sum('price', default=0),
+        average=Avg('price'), maximum=Max('price'), minimum=Min('price'),
+    )
+    return render(request, 'bookmodule/lab8/statistics.html', {'statistics': statistics})
+
+
+def lab8_task7(request):
+    cities = Address.objects.values('city').annotate(student_count=Count('students')).order_by('city')
+    return render(request, 'bookmodule/lab8/cities.html', {'cities': cities})

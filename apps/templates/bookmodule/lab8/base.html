@@ -1,0 +1,14 @@
+{% extends "layouts/base.html" %}
+{% block title %}Lab 8{% endblock %}
+{% block content %}
+<h1>Lab 8 — Django Models Part 2</h1>
+<nav>
+    <a href="{% url 'books.lab8_task1' %}">Task 1: Price</a> |
+    <a href="{% url 'books.lab8_task2' %}">Task 2: Q queries</a> |
+    <a href="{% url 'books.lab8_task3' %}">Task 3: Opposite query</a> |
+    <a href="{% url 'books.lab8_task4' %}">Task 4: Sort titles</a> |
+    <a href="{% url 'books.lab8_task5' %}">Task 5: Statistics</a> |
+    <a href="{% url 'books.lab8_task7' %}">Task 7: Students by city</a>
+</nav>
+{% block lab_content %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "bookmodule/lab8/base.html" %}
+{% block lab_content %}
+<h2>Task 5: Book statistics</h2>
+<dl>
+    <dt>Number of books</dt><dd>{{ statistics.count }}</dd>
+    <dt>Total price</dt><dd>{{ statistics.total|floatformat:2 }}</dd>
+    <dt>Average price</dt><dd>{{ statistics.average|floatformat:2|default:"N/A" }}</dd>
+    <dt>Maximum price</dt><dd>{{ statistics.maximum|floatformat:2|default:"N/A" }}</dd>
+    <dt>Minimum price</dt><dd>{{ statistics.minimum|floatformat:2|default:"N/A" }}</dd>
+</dl>
+{% endblock %}
