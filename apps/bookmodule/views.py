@@ -57,7 +57,7 @@ def search(request):
 
 
 def simple_query(request):
-    mybooks = Book.objects.filter(title__icontains='and')
+    mybooks = Book.objects.filter(title__icontains='Delivery')
     return render(request, 'bookmodule/bookList.html', {'books': mybooks})
 
 
