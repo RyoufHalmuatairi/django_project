@@ -1,0 +1,10 @@
+{% extends "layouts/base.html" %}
+{% block title %}Lab 10 | Part {{ part }}{% endblock %}
+{% block content %}
+<h1>Lab 10 — Book Management</h1>
+<nav>
+    <a href="{% url 'books.lab10_part1_list' %}">Part 1: HTML forms</a> |
+    <a href="{% url 'books.lab10_part2_list' %}">Part 2: Django Forms</a>
+</nav>
+{% block lab_content %}{% endblock %}
+{% endblock %}

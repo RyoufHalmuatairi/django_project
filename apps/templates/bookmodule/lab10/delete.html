@@ -1,0 +1,10 @@
+{% extends "bookmodule/lab10/base.html" %}
+{% block lab_content %}
+<h2>Part {{ part }} — Delete Book</h2>
+<p>Delete “{{ book.title }}”?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Delete book</button>
+    <a href="{% url links.list %}">Cancel</a>
+</form>
+{% endblock %}

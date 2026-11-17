@@ -1,7 +1,15 @@
 from django.urls import path
-from . import views
+from . import lab10, views
 
 urlpatterns = [
+    path('lab9_part1/listbooks', lab10.list_books, {'part': 1}, name='books.lab10_part1_list'),
+    path('lab9_part1/addbook', lab10.book_editor, {'part': 1}, name='books.lab10_part1_add'),
+    path('lab9_part1/editbook/<int:id>', lab10.book_editor, {'part': 1}, name='books.lab10_part1_edit'),
+    path('lab9_part1/deletebook/<int:id>', lab10.delete_book, {'part': 1}, name='books.lab10_part1_delete'),
+    path('lab9_part2/listbooks', lab10.list_books, {'part': 2}, name='books.lab10_part2_list'),
+    path('lab9_part2/addbook', lab10.book_editor, {'part': 2}, name='books.lab10_part2_add'),
+    path('lab9_part2/editbook/<int:id>', lab10.book_editor, {'part': 2}, name='books.lab10_part2_edit'),
+    path('lab9_part2/deletebook/<int:id>', lab10.delete_book, {'part': 2}, name='books.lab10_part2_delete'),
     path('lab9/task1', views.lab9_task1, name='books.lab9_task1'),
     path('lab9/task2', views.lab9_task2, name='books.lab9_task2'),
     path('lab9/task3', views.lab9_task3, name='books.lab9_task3'),

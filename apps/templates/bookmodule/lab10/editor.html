@@ -1,0 +1,26 @@
+{% extends "bookmodule/lab10/base.html" %}
+{% load l10n %}
+{% block lab_content %}
+<h2>Part {{ part }} — {% if book.pk %}Edit Book{% else %}Add Book{% endif %}</h2>
+<form method="post">
+    {% csrf_token %}
+    {% if part == 2 %}
+        {{ form.as_p }}
+    {% else %}
+        <p><label for="title">Title</label>
+        <input id="title" name="title" value="{{ values.title }}" maxlength="100" required>
+        {% if errors.title %}<span role="alert">{{ errors.title }}</span>{% endif %}</p>
+        <p><label for="author">Author</label>
+        <input id="author" name="author" value="{{ values.author }}" maxlength="50" required>
+        {% if errors.author %}<span role="alert">{{ errors.author }}</span>{% endif %}</p>
+        <p><label for="price">Price</label>
+        <input id="price" name="price" type="number" min="0" step="any" value="{{ values.price|unlocalize }}" required>
+        {% if errors.price %}<span role="alert">{{ errors.price }}</span>{% endif %}</p>
+        <p><label for="edition">Edition</label>
+        <input id="edition" name="edition" type="number" min="1" max="32767" value="{{ values.edition|unlocalize }}" required>
+        {% if errors.edition %}<span role="alert">{{ errors.edition }}</span>{% endif %}</p>
+    {% endif %}
+    <button type="submit">Save book</button>
+    <a href="{% url links.list %}">Cancel</a>
+</form>
+{% endblock %}
